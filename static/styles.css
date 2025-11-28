@@ -1,0 +1,16 @@
+/* Modern Design */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+.container { background: white; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 900px; width: 100%; overflow: hidden; }
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 20px; text-align: center; }
+.header h1 { font-size: 2.5em; }
+.tabs { display: flex; border-bottom: 3px solid #f0f0f0; background: #f9f9f9; }
+.tab-button { flex: 1; padding: 15px 20px; border: none; background: none; cursor: pointer; color: #666; }
+.tab-button.active { color: #667eea; border-bottom: 3px solid #667eea; }
+.tab-content { display: none; padding: 40px; }
+.tab-content.active { display: block; }
+input, textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; }
+input:focus, textarea:focus { outline: none; border-color: #667eea; }
+.button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; }
+.results { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 20px; display: none; }
+.results.show { display: block; }

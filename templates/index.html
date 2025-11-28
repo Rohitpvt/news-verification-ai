@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Verification AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔍 News Verification AI</h1>
+            <p>Check News Claims Against Multiple Sources</p>
+        </header>
+        <main>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('text')">📝 Text</button>
+                <button class="tab-btn" onclick="switchTab('image')">🖼️ Image</button>
+            </div>
+            <div id="text" class="tab active">
+                <h2>Verify a News Claim</h2>
+                <textarea id="claim" placeholder="Enter news claim..." rows="4"></textarea>
+                <button onclick="verifyText()">Verify Claim</button>
+                <div id="textResult"></div>
+            </div>
+            <div id="image" class="tab">
+                <h2>Verify Text from Image</h2>
+                <input type="file" id="img" accept="image/*">
+                <button onclick="verifyImage()">Extract & Verify</button>
+                <div id="imgResult"></div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
