@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Verification AI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News Verification AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🔍 News Verification AI</h1>
-            <p>Check News Claims Against Multiple Sources</p>
-        </header>
-        <main>
-            <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab('text')">📝 Text</button>
-                <button class="tab-btn" onclick="switchTab('image')">🖼️ Image</button>
-            </div>
-            <div id="text" class="tab active">
-                <h2>Verify a News Claim</h2>
-                <textarea id="claim" placeholder="Enter news claim..." rows="4"></textarea>
-                <button onclick="verifyText()">Verify Claim</button>
-                <div id="textResult"></div>
-            </div>
-            <div id="image" class="tab">
-                <h2>Verify Text from Image</h2>
-                <input type="file" id="img" accept="image/*">
-                <button onclick="verifyImage()">Extract & Verify</button>
-                <div id="imgResult"></div>
-            </div>
-        </main>
+  <div class="container">
+    <div class="header">
+      <h1>🔍 News Verification AI</h1>
+      <p>Check News Claims Against Multiple Sources</p>
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    <div class="tabs">
+      <button class="tab-button active" data-tab="textTab">📝 Text</button>
+      <button class="tab-button" data-tab="imageTab">🖼️ Image</button>
+    </div>
+    
+    <div id="textTab" class="tab-content active">
+      <h2>Verify a News Claim</h2>
+      <form id="textForm">
+        <textarea id="textInput" placeholder="Enter news claim..." rows="4"></textarea>
+        <button type="submit" class="button">Verify Claim</button>
+        <div id="textResults"></div>
+      </form>
+    </div>
+    
+    <div id="imageTab" class="tab-content">
+      <h2>Verify Text from Image</h2>
+      <form id="imageForm">
+        <input type="file" id="imageInput" accept="image/*" />
+        <button type="submit" class="button">Extract & Verify</button>
+        <div id="imageResults"></div>
+      </form>
+    </div>
+  </div>
+  
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
