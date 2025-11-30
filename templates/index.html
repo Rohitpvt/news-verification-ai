@@ -1,42 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News Verification AI</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Verification AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>🔍 News Verification AI</h1>
-      <p>Check News Claims Against Multiple Sources</p>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔍 News Verification AI</h1>
+            <p>Verify news claims instantly using AI</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="textTab">📝 Text Verification</button>
+                <button class="tab-btn" data-tab="imageTab">🖼️ Image Verification</button>
+            </div>
+
+            <!-- Text Verification Tab -->
+            <div id="textTab" class="tab-content active">
+                <h2>Verify a News Claim</h2>
+                <form id="textForm">
+                    <textarea id="claimInput" placeholder="Enter the news claim you want to verify..." rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary">Verify Claim</button>
+                </form>
+                <div id="textResults" class="results hidden"></div>
+            </div>
+
+            <!-- Image Verification Tab -->
+            <div id="imageTab" class="tab-content">
+                <h2>Analyze Image Quality</h2>
+                <form id="imageForm">
+                    <div class="upload-box">
+                        <input type="file" id="imageInput" accept="image/*" />
+                        <label for="imageInput" class="upload-label">Click or drag image here</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Analyze Image</button>
+                </form>
+                <div id="imageResults" class="results hidden"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🚀 Powered by CNN, One Hot Encoding, and RAG Pipeline</p>
+        </footer>
     </div>
-    
-    <div class="tabs">
-      <button class="tab-button active" data-tab="textTab">📝 Text</button>
-      <button class="tab-button" data-tab="imageTab">🖼️ Image</button>
-    </div>
-    
-    <div id="textTab" class="tab-content active">
-      <h2>Verify a News Claim</h2>
-      <form id="textForm">
-        <textarea id="textInput" placeholder="Enter news claim..." rows="4"></textarea>
-        <button type="submit" class="button">Verify Claim</button>
-        <div id="textResults"></div>
-      </form>
-    </div>
-    
-    <div id="imageTab" class="tab-content">
-      <h2>Verify Text from Image</h2>
-      <form id="imageForm">
-        <input type="file" id="imageInput" accept="image/*" />
-        <button type="submit" class="button">Extract & Verify</button>
-        <div id="imageResults"></div>
-      </form>
-    </div>
-  </div>
-  
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

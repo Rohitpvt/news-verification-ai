@@ -1,16 +1,277 @@
-/* Modern Design */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-.container { background: white; border-radius: 15px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 900px; width: 100%; overflow: hidden; }
-.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 20px; text-align: center; }
-.header h1 { font-size: 2.5em; }
-.tabs { display: flex; border-bottom: 3px solid #f0f0f0; background: #f9f9f9; }
-.tab-button { flex: 1; padding: 15px 20px; border: none; background: none; cursor: pointer; color: #666; }
-.tab-button.active { color: #667eea; border-bottom: 3px solid #667eea; }
-.tab-content { display: none; padding: 40px; }
-.tab-content.active { display: block; }
-input, textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; }
-input:focus, textarea:focus { outline: none; border-color: #667eea; }
-.button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; }
-.results { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 20px; display: none; }
-.results.show { display: block; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.main {
+    padding: 30px 20px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.tab-btn:hover {
+    color: #667eea;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* Form Elements */
+textarea, input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus, input[type="file"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+textarea {
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+.upload-box {
+    position: relative;
+    border: 2px dashed #667eea;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #f8f9ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+    background: #eef0ff;
+    border-color: #764ba2;
+}
+
+.upload-box input[type="file"] {
+    display: none;
+}
+
+.upload-label {
+    display: block;
+    cursor: pointer;
+    color: #667eea;
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Results */
+.results {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9ff;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.results.hidden {
+    display: none;
+}
+
+.result-item {
+    margin-bottom: 15px;
+}
+
+.result-item:last-child {
+    margin-bottom: 0;
+}
+
+.result-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.result-value {
+    color: #666;
+    font-size: 14px;
+}
+
+.verdict {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.verdict.true {
+    background: #d4edda;
+    color: #155724;
+}
+
+.verdict.false {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.verdict.mixed {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.footer {
+    background: #f8f9ff;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    border-top: 1px solid #eee;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        border-radius: 0;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 22px;
+    }
+    
+    .main {
+        padding: 20px;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        padding-left: 15px;
+    }
+    
+    .tab-btn.active {
+        border-left-color: #667eea;
+    }
+}
